@@ -93,11 +93,12 @@ export async function POST(request: Request) {
     const response = await fetch(`${OLLAMA_URL}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      signal: AbortSignal.timeout(120000),
+      signal: AbortSignal.timeout(300000),
       body: JSON.stringify({
         model: OLLAMA_MODEL,
         stream: false,
-        options: { temperature: 0.2, num_ctx: 8192 },
+        keep_alive: "30m",
+        options: { temperature: 0.2, num_ctx: 4096, num_predict: 350 },
         messages: [
           { role: "system", content: system },
           ...(body.history ?? []).slice(-6),
