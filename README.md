@@ -1,4 +1,4 @@
-# ILPS no Campo
+# ILPF no Campo
 
 Protótipo de um aplicativo educacional sobre Integração Lavoura-Pecuária-Silvicultura, criado para o **Build with Gemma: Amazon Eco-Hack**, na Universidade Federal do Acre.
 
@@ -8,7 +8,7 @@ Protótipo de um aplicativo educacional sobre Integração Lavoura-Pecuária-Sil
 
 Pequenos e médios produtores da Amazônia nem sempre têm conexão estável ou acesso imediato a materiais técnicos. Ao mesmo tempo, sistemas integrados exigem planejamento e não podem ser tratados como uma receita única para qualquer propriedade.
 
-O ILPS no Campo foi pensado como uma ponte entre o produtor e o conhecimento técnico: explica conceitos em linguagem direta, organiza uma trilha de aprendizagem e mostra de onde vem cada informação.
+O ILPF no Campo foi pensado como uma ponte entre o produtor e o conhecimento técnico: explica conceitos em linguagem direta, organiza uma trilha de aprendizagem e mostra de onde vem cada informação.
 
 ## O que construímos no hackathon
 
@@ -85,7 +85,7 @@ worker/              entrada da aplicação para execução web
 ## Próximas entregas
 
 1. Notebook Kaggle com Gemma 3n E2B e recuperação de documentos.
-2. Avaliação das respostas em português com perguntas de ILPS.
+2. Avaliação das respostas em português com perguntas de ILPF.
 3. Vídeo público de até três minutos.
 4. Writeup técnico da submissão.
 5. Prova de conceito Android com inferência no dispositivo.
