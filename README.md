@@ -1,38 +1,99 @@
 # ILPS no Campo
 
-Agente educacional offline-first sobre Integração Lavoura-Pecuária-Silvicultura para pequenos e médios produtores da Amazônia.
+Protótipo de um aplicativo educacional sobre Integração Lavoura-Pecuária-Silvicultura, criado para o **Build with Gemma: Amazon Eco-Hack**, na Universidade Federal do Acre.
 
-Projeto desenvolvido para o **Build with Gemma: Amazon Eco-Hack**, realizado na Universidade Federal do Acre (UFAC).
+![Capa do projeto](public/og.png)
 
-## O que este repositório contém
+## O problema
 
-- Protótipo web mobile-first da experiência do produtor.
-- Estrutura para o notebook técnico do Kaggle.
-- Catálogo inicial da base de conhecimento sobre ILPS/ILPF.
-- Documentação da arquitetura planejada para o aplicativo Android offline.
+Pequenos e médios produtores da Amazônia nem sempre têm conexão estável ou acesso imediato a materiais técnicos. Ao mesmo tempo, sistemas integrados exigem planejamento e não podem ser tratados como uma receita única para qualquer propriedade.
 
-## Executar o protótipo
+O ILPS no Campo foi pensado como uma ponte entre o produtor e o conhecimento técnico: explica conceitos em linguagem direta, organiza uma trilha de aprendizagem e mostra de onde vem cada informação.
 
-Requisitos: Node.js 22 ou superior.
+## O que construímos no hackathon
+
+Esta versão é um protótipo web que simula a experiência do futuro aplicativo Android. Ela permite:
+
+- cadastrar um perfil básico da propriedade;
+- conversar com um tutor de ILPS;
+- consultar respostas demonstrativas acompanhadas de fontes;
+- seguir uma trilha curta de aprendizagem;
+- responder a um quiz;
+- navegar por uma biblioteca técnica local.
+
+As respostas da interface ainda são pré-configuradas. A execução real do **Gemma 3n E2B com RAG** será demonstrada no notebook do Kaggle.
+
+## Como executar
+
+Requisitos:
+
+- Node.js 22.13 ou superior;
+- npm.
 
 ```bash
+git clone https://github.com/erico-cristiam/ilps-offline-agent.git
+cd ilps-offline-agent
 npm install
 npm run dev
 ```
 
-Acesse `http://localhost:3000`.
+Abra `http://localhost:3000`.
 
-## Estado atual
+Para validar a versão de produção:
 
-A interface possui respostas demonstrativas para validar o fluxo educacional. O pipeline real **Gemma 3n E2B + RAG** será apresentado em um Kaggle Notebook e, na evolução do produto, executado localmente no Android por meio do LiteRT-LM.
+```bash
+npm test
+```
 
-## Princípios
+## Arquitetura proposta
 
-1. Funcionar em ambientes com conectividade limitada.
-2. Traduzir conhecimento técnico para uma linguagem acessível.
-3. Apresentar fontes verificáveis junto às respostas.
-4. Apoiar a aprendizagem sem substituir assistência agronômica.
+```text
+Pergunta do produtor
+        ↓
+Busca na base técnica armazenada no celular
+        ↓
+Trechos relevantes e referências
+        ↓
+Gemma 3n E2B executado no dispositivo
+        ↓
+Resposta educacional, fonte e alerta técnico
+```
 
-## Aviso
+O notebook do Kaggle será usado para carregar o modelo, preparar os documentos, demonstrar o RAG e registrar os testes. A evolução para Android prevê inferência local com LiteRT-LM.
 
-Este é um protótipo educacional. As respostas não constituem prescrição agronômica e não substituem diagnóstico de campo ou assistência técnica qualificada.
+Mais detalhes estão em [`docs/architecture.md`](docs/architecture.md).
+
+## Organização do repositório
+
+```text
+app/                 interface do protótipo
+docs/                decisões técnicas e arquitetura
+evaluation/          perguntas usadas nos testes
+kaggle-notebooks/    roteiro do notebook público
+knowledge-base/      catálogo das fontes selecionadas
+public/              mídia do projeto
+worker/              entrada da aplicação para execução web
+```
+
+## Limitações atuais
+
+- O modelo Gemma ainda não está conectado à interface web.
+- As respostas do chat são exemplos controlados para demonstrar a experiência.
+- A base de documentos ainda será revisada e ampliada.
+- O protótipo não fornece prescrição agronômica nem substitui assistência técnica.
+
+## Próximas entregas
+
+1. Notebook Kaggle com Gemma 3n E2B e recuperação de documentos.
+2. Avaliação das respostas em português com perguntas de ILPS.
+3. Vídeo público de até três minutos.
+4. Writeup técnico da submissão.
+5. Prova de conceito Android com inferência no dispositivo.
+
+## Fontes iniciais
+
+- Embrapa — Integração Lavoura-Pecuária-Floresta: perguntas e respostas.
+- Embrapa — Sistemas de ILPF na Região Norte do Brasil.
+- Embrapa Florestas — Integração Lavoura-Pecuária-Floresta.
+
+O catálogo com os endereços e o estado de revisão está em [`knowledge-base/sources.csv`](knowledge-base/sources.csv).
