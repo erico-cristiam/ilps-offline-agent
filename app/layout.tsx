@@ -10,20 +10,20 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL(origin),
-    title: "ILPS no Campo — conhecimento que cria raízes",
-    description: "Agente educacional offline-first sobre ILPS para produtores da Amazônia.",
+    title: "AGROFLORA IA — conhecimento e capacitação ILPF na Amazônia",
+    description: "Tutora educacional offline com Gemma 3n e base verificável sobre ILPF para produtores da Amazônia.",
     openGraph: {
-      title: "ILPS no Campo",
-      description: "Conhecimento que cria raízes — educação sobre ILPS para produtores da Amazônia.",
-      images: [{ url: `${origin}/og.png`, width: 1732, height: 909, alt: "ILPS no Campo — conhecimento que cria raízes" }],
+      title: "AGROFLORA IA",
+      description: "Conhecimento e capacitação ILPF na Amazônia.",
+      images: [{ url: `${origin}/agroflora-cover.jpeg`, width: 1440, height: 768, alt: "AGROFLORA IA — conhecimento e capacitação ILPF na Amazônia" }],
       locale: "pt_BR",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "ILPS no Campo",
-      description: "Conhecimento que cria raízes.",
-      images: [`${origin}/og.png`],
+      title: "AGROFLORA IA",
+      description: "Conhecimento e capacitação ILPF na Amazônia.",
+      images: [`${origin}/agroflora-cover.jpeg`],
     },
   };
 }
