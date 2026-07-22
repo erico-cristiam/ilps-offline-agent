@@ -1,99 +1,83 @@
-# ILPF no Campo
+# AGROFLORA IA
 
-Protótipo de um aplicativo educacional sobre Integração Lavoura-Pecuária-Silvicultura, criado para o **Build with Gemma: Amazon Eco-Hack**, na Universidade Federal do Acre.
+Tutora educacional offline sobre Integração Lavoura-Pecuária-Floresta (ILPF) para pequenos e médios produtores da Amazônia. Projeto desenvolvido para o **Build with Gemma: Amazon Eco-Hack**, na UFAC.
 
-![Capa do projeto](public/og.png)
+![Capa da AGROFLORA IA](public/agroflora-cover.jpeg)
 
-## O problema
+## O que já funciona
 
-Pequenos e médios produtores da Amazônia nem sempre têm conexão estável ou acesso imediato a materiais técnicos. Ao mesmo tempo, sistemas integrados exigem planejamento e não podem ser tratados como uma receita única para qualquer propriedade.
+- interface mobile navegável;
+- perfil básico da propriedade;
+- chat conectado ao Gemma 3n E2B quando o modelo está disponível;
+- busca local (RAG) em uma base técnica, científica e jurídica;
+- apresentação das fontes usadas em cada resposta;
+- modo de consulta da base quando o Gemma não está iniciado;
+- trilha de aprendizagem, quiz e biblioteca local.
 
-O ILPF no Campo foi pensado como uma ponte entre o produtor e o conhecimento técnico: explica conceitos em linguagem direta, organiza uma trilha de aprendizagem e mostra de onde vem cada informação.
+O chat não usa respostas pré-programadas. A pergunta passa por uma busca nos trechos locais e o contexto recuperado é enviado ao Gemma. Se o serviço do modelo estiver desligado, a aplicação informa isso e mostra somente os trechos encontrados, sem fingir que houve geração por IA.
 
-## O que construímos no hackathon
-
-Esta versão é um protótipo web que simula a experiência do futuro aplicativo Android. Ela permite:
-
-- cadastrar um perfil básico da propriedade;
-- conversar com um tutor de ILPS;
-- consultar respostas demonstrativas acompanhadas de fontes;
-- seguir uma trilha curta de aprendizagem;
-- responder a um quiz;
-- navegar por uma biblioteca técnica local.
-
-As respostas da interface ainda são pré-configuradas. A execução real do **Gemma 3n E2B com RAG** será demonstrada no notebook do Kaggle.
-
-## Como executar
+## Executar o protótipo
 
 Requisitos:
 
 - Node.js 22.13 ou superior;
-- npm.
+- [Ollama](https://ollama.com/download);
+- aproximadamente 5,6 GB disponíveis para o modelo `gemma3n:e2b`.
+
+Baixe o modelo uma vez:
+
+```bash
+ollama pull gemma3n:e2b
+```
+
+Depois execute a aplicação:
 
 ```bash
 git clone https://github.com/erico-cristiam/ilps-offline-agent.git
 cd ilps-offline-agent
 npm install
+npm run model:check
 npm run dev
 ```
 
-Abra `http://localhost:3000`.
+Abra `http://localhost:3000`. Depois do download inicial, o Ollama e a base podem operar sem internet.
 
-Para validar a versão de produção:
-
-```bash
-npm test
-```
-
-## Arquitetura proposta
+## Como a resposta é produzida
 
 ```text
 Pergunta do produtor
         ↓
-Busca na base técnica armazenada no celular
+Busca lexical na base local
         ↓
-Trechos relevantes e referências
+Seleção de leis, referências técnicas e artigos
         ↓
-Gemma 3n E2B executado no dispositivo
+Gemma 3n E2B recebe pergunta + contexto + perfil
         ↓
-Resposta educacional, fonte e alerta técnico
+Resposta educacional + fontes recuperadas + alerta técnico
 ```
 
-O notebook do Kaggle será usado para carregar o modelo, preparar os documentos, demonstrar o RAG e registrar os testes. A evolução para Android prevê inferência local com LiteRT-LM.
+Adicionar documentos não exige treinar novamente o Gemma. O arquivo [`knowledge-base/chunks.json`](knowledge-base/chunks.json) funciona como a memória consultável do projeto. Um ajuste fino só seria considerado mais tarde para modificar comportamento, vocabulário ou formato; fatos atualizáveis permanecem no RAG.
 
-Mais detalhes estão em [`docs/architecture.md`](docs/architecture.md).
+## Base de conhecimento
 
-## Organização do repositório
+A base inicial reúne:
 
-```text
-app/                 interface do protótipo
-docs/                decisões técnicas e arquitetura
-evaluation/          perguntas usadas nos testes
-kaggle-notebooks/    roteiro do notebook público
-knowledge-base/      catálogo das fontes selecionadas
-public/              mídia do projeto
-worker/              entrada da aplicação para execução web
-```
+- Decreto nº 6.514/2008, usando o texto compilado do Planalto;
+- Lei nº 12.651/2012;
+- material legal fornecido pela equipe;
+- referências da Embrapa sobre ILPF na Amazônia e no Acre;
+- trabalhos de Bonan, Nobre et al., Pitman et al. e Stull.
 
-## Limitações atuais
+O PDF fornecido pela equipe está classificado como **referência complementar com revisão pendente**. Ele não substitui o texto legal oficial e não autoriza concluir que ILPF, PRAD ou TAC produzam automaticamente a cessação de embargo ou de multa.
 
-- O modelo Gemma ainda não está conectado à interface web.
-- As respostas do chat são exemplos controlados para demonstrar a experiência.
-- A base de documentos ainda será revisada e ampliada.
-- O protótipo não fornece prescrição agronômica nem substitui assistência técnica.
+Consulte os critérios em [`knowledge-base/README.md`](knowledge-base/README.md) e o catálogo em [`knowledge-base/sources.csv`](knowledge-base/sources.csv).
 
-## Próximas entregas
+## Limites de segurança
 
-1. Notebook Kaggle com Gemma 3n E2B e recuperação de documentos.
-2. Avaliação das respostas em português com perguntas de ILPF.
-3. Vídeo público de até três minutos.
-4. Writeup técnico da submissão.
-5. Prova de conceito Android com inferência no dispositivo.
+A AGROFLORA IA é educacional. Não fornece prescrição agronômica, parecer jurídico ou decisão sobre regularização ambiental. Respostas sobre embargo, APP, Reserva Legal, CAR, PRA e licenciamento devem ser confirmadas com a autoridade ambiental e profissionais habilitados.
 
-## Fontes iniciais
+## Aplicativo Android
 
-- Embrapa — Integração Lavoura-Pecuária-Floresta: perguntas e respostas.
-- Embrapa — Sistemas de ILPF na Região Norte do Brasil.
-- Embrapa Florestas — Integração Lavoura-Pecuária-Floresta.
+O protótipo web usa Ollama para tornar a integração verificável em um dia de hackathon. A versão Android prevista mantém o mesmo RAG, mas troca o serviço local pela execução do Gemma no aparelho com LiteRT-LM ou runtime compatível.
 
-O catálogo com os endereços e o estado de revisão está em [`knowledge-base/sources.csv`](knowledge-base/sources.csv).
+Mais detalhes: [`docs/architecture.md`](docs/architecture.md).

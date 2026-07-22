@@ -1,8 +1,8 @@
 {
-  "name": "ilps-no-campo",
+  "name": "agroflora-ia",
   "version": "0.1.0",
   "private": true,
-  "description": "Protótipo mobile de um tutor offline sobre ILPS para produtores da Amazônia.",
+  "description": "Tutora mobile offline sobre ILPF para produtores da Amazônia, com Gemma 3n e RAG local.",
   "engines": {
     "node": ">=22.13.0"
   },
@@ -12,6 +12,7 @@
     "start": "vinext start",
     "test": "npm run lint && npm run build",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .vinext --ignore-pattern .wrangler",
+    "model:check": "node scripts/check-model.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
