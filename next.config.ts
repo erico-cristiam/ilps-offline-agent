@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // The prototype ships a single local cover image. Serving it directly keeps
+  // local execution independent from Cloudflare image bindings.
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

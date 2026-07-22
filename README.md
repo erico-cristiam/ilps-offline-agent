@@ -30,9 +30,11 @@ Baixe o modelo uma vez:
 ollama pull gemma3n:e2b
 ```
 
-Depois execute a aplicação:
+Depois execute a aplicação. No Windows, use uma pasta do seu usuário, como
+`Documentos`; não clone o projeto dentro de `C:\Windows\System32`.
 
-```bash
+```powershell
+cd "$env:USERPROFILE\Documents"
 git clone https://github.com/erico-cristiam/ilpf-offline-agent.git
 cd ilpf-offline-agent
 npm install
@@ -40,7 +42,17 @@ npm run model:check
 npm run dev
 ```
 
-Abra `http://localhost:3000`. Depois do download inicial, o Ollama e a base podem operar sem internet.
+Abra `http://localhost:3000`. Use `npm run dev` para a demonstração local. O
+comando `npm run start` é reservado ao build de produção e pode exigir os
+bindings da plataforma de hospedagem.
+
+Depois do download inicial, o Ollama, o modelo e a base podem operar sem
+internet. Se o comando `ollama` não for reconhecido no Windows, feche e abra o
+terminal após a instalação ou execute:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe" list
+```
 
 ## Como a resposta é produzida
 
@@ -66,6 +78,10 @@ A base inicial reúne:
 - Lei nº 12.651/2012;
 - material legal fornecido pela equipe;
 - referências da Embrapa sobre ILPF na Amazônia e no Acre;
+- aula de campo sobre fundamentos técnicos de implantação de ILPF com eucalipto;
+- livro `Integração Lavoura-Pecuária-Floresta: Cultivando o Futuro` (Embrapa Pecuária Sudeste, 2026);
+- artigo regional `O sistema ILPF na Amazônia`;
+- conteúdos de Agrocim, John Deere e Aegro, classificados como divulgação e usados com ressalvas;
 - trabalhos de Bonan, Nobre et al., Pitman et al. e Stull.
 
 O PDF fornecido pela equipe está classificado como **referência complementar com revisão pendente**. Ele não substitui o texto legal oficial e não autoriza concluir que ILPF, PRAD ou TAC produzam automaticamente a cessação de embargo ou de multa.
