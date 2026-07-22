@@ -1,4 +1,11 @@
-id,title,institution,region,status,url
-embrapa-ilpf-faq,"Integração Lavoura-Pecuária-Floresta: perguntas e respostas",Embrapa,Brasil,selecionada,https://www.embrapa.br/tema-integracao-lavoura-pecuaria-floresta-ilpf/perguntas-e-respostas
-embrapa-ilpf-norte,"Sistemas de ILPF na Região Norte do Brasil",Embrapa,Região Norte,a_coletar,https://www.atermaisdigital.cnptia.embrapa.br/web/ilpf/publicacoes
-embrapa-florestas-ilpf,"Integração Lavoura-Pecuária-Floresta",Embrapa Florestas,Brasil,selecionada,https://www.embrapa.br/web/florestas/ilpf
+id,title,institution,type,status,url
+decreto-6514,"Decreto nº 6.514/2008 - texto compilado",Presidência da República,fonte_legal_primaria,selecionada,https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514compilado.htm
+lei-12651,"Lei nº 12.651/2012 - proteção da vegetação nativa",Presidência da República,fonte_legal_primaria,selecionada,https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm
+nota-equipe,"ILPF e cessação de embargo",Material fornecido pela equipe,referencia_complementar,revisao_juridica_pendente,documents/referencia-legal-embargo-ilpf.pdf
+bonan-2016,"Ecological Climatology: Concepts and Applications",Cambridge University Press,livro_cientifico,referencia_bibliografica,https://www.cambridge.org/highereducation/books/ecological-climatology/BC4703078B96487091C75626A91D1605
+embrapa-2020,"Sistemas agrossilvipastoris na Amazônia brasileira",Embrapa,referencia_tecnica,referencia_bibliografica,https://www.embrapa.br/busca-de-publicacoes
+embrapa-2021,"Integração lavoura-pecuária-floresta: fundamentos e aplicações",Embrapa,referencia_tecnica,selecionada,https://www.embrapa.br/tema-integracao-lavoura-pecuaria-floresta-ilpf
+nobre-2020,"Land-use and climate change risks in the Amazon",Science Advances,artigo_cientifico,selecionada,https://doi.org/10.1126/sciadv.aba2949
+oliveira-2012,"Experiências com implantação de unidades de ILPF no Acre",Embrapa Acre,referencia_tecnica_regional,referencia_bibliografica,https://www.embrapa.br/acre/busca-de-publicacoes
+pitman-2009,"The impact of land cover change on climate",Reviews of Geophysics,artigo_cientifico,selecionada,https://doi.org/10.1029/2007RG000242
+stull-1988,"An Introduction to Boundary Layer Meteorology",Kluwer Academic Publishers,livro_cientifico,referencia_bibliografica,https://link.springer.com/book/9789027727695

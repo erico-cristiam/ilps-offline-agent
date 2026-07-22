@@ -1,0 +1,110 @@
+[
+  {
+    "id": "decreto-6514-art-15",
+    "title": "Decreto nº 6.514/2008 - arts. 15-A, 15-B e 16 (texto compilado)",
+    "institution": "Presidência da República",
+    "authority": "fonte_legal_primaria",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514compilado.htm",
+    "tags": ["embargo", "desembargo", "infração ambiental", "regularização", "documentação"],
+    "content": "O embargo restringe-se aos locais em que a infração ambiental foi efetivamente caracterizada. A cessação da suspensão ou do embargo depende de decisão da autoridade ambiental depois que o autuado apresenta documentação que regularize a obra ou atividade. Em áreas irregularmente desmatadas ou queimadas, o agente pode embargar obras e atividades, ressalvadas as hipóteses legais. A adoção de ILPF não produz desembargo automático."
+  },
+  {
+    "id": "decreto-6514-atualizacao-2024",
+    "title": "Decreto nº 6.514/2008 - texto compilado e alterações de 2024",
+    "institution": "Presidência da República",
+    "authority": "fonte_legal_primaria",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514compilado.htm",
+    "tags": ["embargo preventivo", "sanção", "degradação", "reparação"],
+    "content": "O texto compilado deve ser consultado porque o Decreto nº 6.514/2008 recebeu alterações posteriores, inclusive pelo Decreto nº 12.189/2024. As medidas de embargo buscam cessar a infração e a degradação, impedir vantagem econômica decorrente da infração, resguardar a recuperação ambiental e garantir o processo de responsabilização."
+  },
+  {
+    "id": "lei-12651-principios",
+    "title": "Lei nº 12.651/2012 - proteção da vegetação nativa",
+    "institution": "Presidência da República",
+    "authority": "fonte_legal_primaria",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+    "tags": ["código florestal", "vegetação nativa", "APP", "reserva legal", "Amazônia Legal"],
+    "content": "A Lei nº 12.651/2012 estabelece normas para a proteção e o uso sustentável da vegetação nativa. Define Área de Preservação Permanente, Reserva Legal, área rural consolidada e manejo sustentável. O imóvel rural deve respeitar APP e manter Reserva Legal nos percentuais aplicáveis à sua localização e ao bioma, conforme o art. 12 e as exceções previstas na própria lei."
+  },
+  {
+    "id": "lei-12651-regularizacao",
+    "title": "Lei nº 12.651/2012 - CAR, PRA e recomposição",
+    "institution": "Presidência da República",
+    "authority": "fonte_legal_primaria",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+    "tags": ["CAR", "PRA", "regularização ambiental", "recomposição", "sistema agroflorestal"],
+    "content": "A regularização ambiental rural envolve instrumentos como o Cadastro Ambiental Rural e os Programas de Regularização Ambiental. A recomposição de Reserva Legal pode, nas condições do art. 66, utilizar plantio intercalado de espécies nativas com exóticas ou frutíferas em sistema agroflorestal, observados os critérios legais e do órgão ambiental. O projeto técnico precisa respeitar a destinação e as restrições específicas de cada área."
+  },
+  {
+    "id": "nota-equipe-embargo-ilpf",
+    "title": "Nota fornecida pela equipe: ILPF e cessação de embargo",
+    "institution": "Material fornecido pela equipe",
+    "authority": "referencia_complementar_revisao_pendente",
+    "url": "/references/referencia-legal-embargo-ilpf.pdf",
+    "tags": ["ILPF", "embargo", "PRAD", "TAC", "função social", "recuperação"],
+    "content": "O documento apresenta a ILPF como possível componente técnico de recuperação ambiental e de um PRAD, associando produção sustentável, recuperação do solo e função social da propriedade. Trata-se de uma nota complementar, não de fonte normativa. Afirmações sobre TAC, suspensão de multas ou cessação de embargo não são automáticas e devem ser conferidas na legislação vigente e com o órgão ambiental competente."
+  },
+  {
+    "id": "embrapa-amazonia-2020",
+    "title": "Sistemas agrossilvipastoris na Amazônia brasileira",
+    "institution": "Embrapa",
+    "authority": "referencia_tecnica",
+    "url": "https://www.embrapa.br/busca-de-publicacoes",
+    "tags": ["Amazônia", "agrossilvipastoril", "solo", "produção", "floresta"],
+    "content": "Referência técnica indicada para compreender o desenho e o manejo de sistemas agrossilvipastoris nas condições amazônicas. Deve orientar exemplos regionais sobre integração entre lavoura, pecuária e componente florestal, sempre considerando solo, clima, logística e assistência técnica local."
+  },
+  {
+    "id": "embrapa-ilpf-2021",
+    "title": "Integração lavoura-pecuária-floresta: fundamentos e aplicações",
+    "institution": "Embrapa",
+    "authority": "referencia_tecnica",
+    "url": "https://www.embrapa.br/tema-integracao-lavoura-pecuaria-floresta-ilpf",
+    "tags": ["ILPF", "fundamentos", "manejo", "pastagem", "árvores"],
+    "content": "A ILPF integra componentes agrícolas, pecuários e florestais em rotação, consórcio ou sucessão. O planejamento começa pelo diagnóstico da propriedade, definição dos objetivos, análise de solo, disponibilidade de recursos, escolha de espécies compatíveis e cronograma de manejo. Não existe arranjo único aplicável a todas as propriedades."
+  },
+  {
+    "id": "embrapa-acre-2012",
+    "title": "Experiências com implantação de unidades de ILPF no Acre",
+    "institution": "Embrapa Acre",
+    "authority": "referencia_tecnica_regional",
+    "url": "https://www.embrapa.br/acre/busca-de-publicacoes",
+    "tags": ["Acre", "implantação", "unidade demonstrativa", "ILPF"],
+    "content": "Referência regional indicada para aproximar a capacitação das condições do Acre. Experiências locais são relevantes para discutir implantação gradual, seleção de componentes, acompanhamento técnico e avaliação de resultados produtivos e ambientais."
+  },
+  {
+    "id": "nobre-2020-amazon",
+    "title": "Land-use and climate change risks in the Amazon",
+    "institution": "Science Advances",
+    "authority": "artigo_cientifico",
+    "url": "https://doi.org/10.1126/sciadv.aba2949",
+    "tags": ["Amazônia", "mudança do uso da terra", "clima", "risco"],
+    "content": "Referência científica indicada para contextualizar os riscos combinados de mudança de uso da terra e mudança climática na Amazônia. Na capacitação, sustenta a importância de conservar vegetação, solo e água e de avaliar sistemas produtivos dentro da paisagem regional."
+  },
+  {
+    "id": "bonan-2016-climatology",
+    "title": "Ecological Climatology: Concepts and Applications",
+    "institution": "Cambridge University Press",
+    "authority": "livro_cientifico",
+    "url": "https://www.cambridge.org/highereducation/books/ecological-climatology/BC4703078B96487091C75626A91D1605",
+    "tags": ["climatologia ecológica", "vegetação", "energia", "água", "carbono"],
+    "content": "Referência conceitual sobre as interações entre clima, vegetação, fluxos de energia, água e carbono. Deve ser usada para explicações gerais, sem substituir dados climáticos e recomendações agronômicas locais."
+  },
+  {
+    "id": "pitman-2009-land-cover",
+    "title": "The impact of land cover change on climate",
+    "institution": "Reviews of Geophysics",
+    "authority": "artigo_cientifico",
+    "url": "https://doi.org/10.1029/2007RG000242",
+    "tags": ["cobertura da terra", "clima", "albedo", "evapotranspiração"],
+    "content": "A mudança da cobertura da terra pode alterar albedo, rugosidade, evapotranspiração e trocas de energia, afetando o clima em diferentes escalas. A referência apoia explicações sobre por que o componente arbóreo e a cobertura do solo importam, sem provar isoladamente o desempenho de um arranjo ILPF específico."
+  },
+  {
+    "id": "stull-1988-boundary-layer",
+    "title": "An Introduction to Boundary Layer Meteorology",
+    "institution": "Kluwer Academic Publishers",
+    "authority": "livro_cientifico",
+    "url": "https://link.springer.com/book/9789027727695",
+    "tags": ["camada limite", "microclima", "turbulência", "vento", "temperatura"],
+    "content": "Referência fundamental sobre processos da camada limite atmosférica. Pode apoiar explicações de microclima, vento e temperatura, mas não contém, por si só, uma recomendação de espaçamento de árvores ou manejo animal para uma propriedade específica."
+  }
+]
