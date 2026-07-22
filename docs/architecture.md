@@ -1,36 +1,39 @@
-# Decisões de arquitetura
+# Arquitetura da AGROFLORA IA
 
-## Por que começamos pela web
-
-O hackathon tem duração de um dia. Um protótipo web nos permite validar a experiência do produtor, testar a linguagem e gravar a demonstração sem gastar a maior parte do tempo com empacotamento Android.
-
-O site não é apresentado como produto final. Em telas grandes ele mostra um aparelho simulado; em celulares, ocupa toda a tela como um aplicativo.
-
-## Como o protótipo funciona hoje
-
-- A interface é construída com React e vinext.
-- As respostas do chat são exemplos locais e determinísticos.
-- O perfil, a trilha, o quiz e a biblioteca existem apenas durante a sessão.
-- Nenhum dado é enviado a serviços externos.
-
-## Como o aplicativo deverá funcionar
+## Protótipo atual
 
 ```text
-pergunta
-  → busca semântica nos documentos locais
-  → seleção dos trechos mais relevantes
-  → prompt com contexto para o Gemma 3n E2B
-  → resposta com referência e aviso técnico
+Interface mobile (Next.js)
+  → POST /api/chat
+  → busca lexical em knowledge-base/chunks.json
+  → prompt com os quatro trechos mais relevantes
+  → Ollama local com gemma3n:e2b
+  → resposta e lista de fontes
 ```
 
-Componentes planejados:
+O endpoint testa a disponibilidade do modelo. Sem Ollama ou sem os pesos do Gemma, ele retorna um modo de consulta RAG identificado claramente na interface. Assim, o protótipo nunca apresenta uma resposta estática como se tivesse sido criada pelo modelo.
 
-- aplicativo Android em Kotlin;
-- Gemma 3n E2B em formato compatível com LiteRT-LM;
-- índice de busca e documentos armazenados no aparelho;
-- histórico e preferências mantidos localmente;
-- atualização opcional da base quando houver conexão.
+## Por que RAG em vez de novo treinamento
 
-## Limites de segurança
+Leis, publicações e recomendações mudam. Mantê-las fora dos pesos permite atualizar, remover e auditar cada fonte sem treinar o Gemma novamente. A classificação de autoridade também permite priorizar o Planalto em perguntas jurídicas e sinalizar materiais ainda não revisados.
 
-O tutor pode explicar conceitos, comparar possibilidades e sugerir perguntas para uma visita técnica. Escolha de espécies, correção do solo, dosagens, custos e desenho definitivo do sistema dependem de diagnóstico local e devem ser confirmados por profissional qualificado.
+## Aplicativo Android proposto
+
+```text
+Pergunta
+  → índice local no celular
+  → seleção de trechos
+  → Gemma 3n E2B no dispositivo
+  → resposta com fontes
+```
+
+A evolução mobile deverá usar uma versão quantizada compatível com LiteRT-LM, armazenamento local criptografado e atualização opcional da base quando houver conexão.
+
+## Segurança
+
+- temperatura baixa para reduzir variação factual;
+- instrução para responder somente com o contexto recuperado;
+- prioridade explícita para fontes legais primárias;
+- indicação visual quando o Gemma não está ativo;
+- alerta obrigatório para decisões legais e agronômicas;
+- material fornecido pela equipe marcado como revisão pendente.
