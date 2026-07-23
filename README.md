@@ -46,6 +46,10 @@ Abra `http://localhost:3000`. Use `npm run dev` para a demonstração local. O
 comando `npm run start` é reservado ao build de produção e pode exigir os
 bindings da plataforma de hospedagem.
 
+O comando `npm run model:check` não verifica apenas se o arquivo do modelo foi
+baixado: ele envia uma pergunta curta ao Gemma e só informa que a aplicação está
+pronta quando recebe uma resposta. Todo esse teste acontece localmente.
+
 Depois do download inicial, o Ollama, o modelo e a base podem operar sem
 internet. Se o comando `ollama` não for reconhecido no Windows, feche e abra o
 terminal após a instalação ou execute:
@@ -53,6 +57,39 @@ terminal após a instalação ou execute:
 ```powershell
 & "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe" list
 ```
+
+### Windows: erro de CUDA
+
+Se o teste informar `CUDA error: device kernel image is invalid`, o modelo está
+instalado, mas o backend CUDA do Ollama não conseguiu executar na GPU. É
+possível continuar totalmente offline usando a CPU:
+
+1. encerre o Ollama pelo ícone próximo ao relógio do Windows;
+2. abra um PowerShell e execute:
+
+```powershell
+$env:CUDA_VISIBLE_DEVICES = "-1"
+ollama serve
+```
+
+3. mantenha essa janela aberta e, em outro PowerShell, execute novamente:
+
+```powershell
+cd "$env:USERPROFILE\Documents\ilpf-offline-agent"
+npm run model:check
+npm run dev
+```
+
+Para manter o modo CPU após reiniciar o computador, configure a variável para o
+usuário e reabra o Ollama:
+
+```powershell
+[Environment]::SetEnvironmentVariable("CUDA_VISIBLE_DEVICES", "-1", "User")
+```
+
+Usar a CPU não altera o caráter offline da solução; apenas aumenta o tempo de
+resposta. Para tentar recuperar a aceleração por GPU, atualize o Ollama e o
+driver da NVIDIA e reinicie o computador.
 
 ## Como a resposta é produzida
 
@@ -97,3 +134,12 @@ A AGROFLORA IA é educacional. Não fornece prescrição agronômica, parecer ju
 O protótipo web usa Ollama para tornar a integração verificável em um dia de hackathon. A versão Android prevista mantém o mesmo RAG, mas troca o serviço local pela execução do Gemma no aparelho com LiteRT-LM ou runtime compatível.
 
 Mais detalhes: [`docs/architecture.md`](docs/architecture.md).
+
+## Estrutura principal
+
+- `app/page.tsx`: interface mobile e fluxo educacional;
+- `app/api/chat/route.ts`: RAG, prompt de segurança e chamada ao Ollama;
+- `knowledge-base/chunks.json`: trechos consultados offline;
+- `knowledge-base/sources.csv`: catálogo e classificação das fontes;
+- `scripts/check-model.mjs`: teste real da instalação local do Gemma;
+- `evaluation/questions.json`: perguntas mínimas para avaliação manual.

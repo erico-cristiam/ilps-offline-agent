@@ -60,6 +60,13 @@ function buildContext(chunks: KnowledgeChunk[]) {
   ].join("\n")).join("\n\n");
 }
 
+function sanitizeAnswer(value: string) {
+  return value
+    .replace(/\*\*/g, "")
+    .replace(/^\s*\*[\s▁]+/gm, "- ")
+    .trim();
+}
+
 export async function GET() {
   try {
     const response = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2500) });
@@ -86,7 +93,7 @@ export async function POST(request: Request) {
 
   const chunks = retrieve(question);
   const sources = chunks.map(sourceView);
-  const system = `Você é a AGROFLORA IA, tutora educacional sobre Integração Lavoura-Pecuária-Floresta na Amazônia. Responda em português brasileiro simples, objetivo e acolhedor. Use somente o CONTEXTO recuperado. Não invente artigos, percentuais, resultados ou referências. Diferencie fonte legal primária de material complementar. Para perguntas legais, deixe claro que a resposta é educacional, que ILPF não causa desembargo automático e que a decisão cabe à autoridade ambiental. Para recomendações de manejo, peça validação de assistência técnica. Termine com uma seção curta "Fontes consultadas" citando os números do contexto.`;
+  const system = `Você é a AGROFLORA IA, tutora educacional sobre Integração Lavoura-Pecuária-Floresta na Amazônia. Responda em português brasileiro simples, objetivo e acolhedor. Use somente o CONTEXTO recuperado. Não invente artigos, percentuais, resultados ou referências. Diferencie fonte legal primária, referência técnica e conteúdo de divulgação com revisão pendente. Não use negrito, asteriscos duplos ou títulos em Markdown; escreva em texto simples e, quando necessário, use listas iniciadas por hífen. Em perguntas jurídicas, deixe claro que a resposta é educacional, que ILPF não causa desembargo automático e que a decisão sobre cessação de embargo ou regularização cabe à autoridade ambiental competente. Para recomendações de manejo, peça validação de assistência técnica. Termine com uma seção curta "Fontes consultadas" citando os números do contexto.`;
   const profile = `Perfil informado: ${body.profile?.propertySize ?? "não informado"}; atividade principal: ${body.profile?.activity ?? "não informada"}.`;
 
   try {
@@ -109,7 +116,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) throw new Error(`Ollama respondeu com HTTP ${response.status}`);
     const data = await response.json() as { message?: { content?: string } };
-    const answer = data.message?.content?.trim();
+    const answer = sanitizeAnswer(data.message?.content ?? "");
     if (!answer) throw new Error("Resposta vazia do modelo");
 
     return NextResponse.json({ answer, sources, mode: "gemma", model: OLLAMA_MODEL });

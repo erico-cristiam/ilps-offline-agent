@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil,english]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{center}
+    \includegraphics[width=0.45\textwidth]{public/agroflora-cover.jpeg} \\
+    \vspace{1cm}
+    {\Large \textbf{Projeto Agroflora IA: Agente de Ensino e Capacitação sobre Sistemas ILPF na Amazônia}}\\[1cm]
+    {\large \textit{Educação rural com Gemma 3n, RAG verificável e funcionamento offline}}\\[0.6cm]
+
+    {\large Érico Cristiam Alves Pereira, Arthur Weslley de Alencar Barbosa, Enzo Sampaio Chagas, Julio Cesar Rodrigues Lourenço e Flávio Adonay Flôres Freitas}\\[1cm]
+\end{center}
+
+\section{Project Overview / Resumo do Projeto}
+
+O projeto \textbf{Agroflora IA} desenvolve um sistema educacional de baixo custo, voltado especificamente para as necessidades de pequenos e médios produtores rurais da Amazônia. A região enfrenta severos desafios ligados à pressão por práticas livres de desmatamento e à rigorosa legislação ambiental (Nobre et al., 2020). Atualmente, uma das dores críticas desse público é o embargo de áreas decorrente de infrações ambientais (BRASIL, 2008), situação que pode limitar atividades produtivas, dificultar o acesso a crédito e comprometer a renda familiar.
+
+Como solução tecnológica, o agente de inteligência artificial democratiza o acesso a conteúdo educacional agronômico e jurídico e apresenta fundamentos para a transição do modelo extensivo tradicional aos sistemas de Integração Lavoura-Pecuária-Floresta (ILPF) (Embrapa, 2020; Embrapa, 2021). A ferramenta ajuda o produtor a compreender possibilidades de recuperação produtiva, regularização de passivos e conversão de multas previstas na legislação (Brasil, 2008), sem substituir assistência técnica, parecer jurídico ou decisão da autoridade ambiental. A adoção de ILPF não produz desembargo automático.
+
+Além do potencial socioeconômico, a ferramenta apresenta a ILPF como estratégia de produção sustentável e adaptação climática regional. A reintrodução do componente arbóreo pode modificar o balanço de energia da superfície, favorecendo o fluxo de calor latente por evapotranspiração e reduzindo o fluxo de calor sensível (Bonan, 2016; Pitman et al., 2009). Essa dinâmica pode atenuar temperaturas próximas à superfície e elevar a umidade relativa do ar (Stull, 1988), contribuindo para um microclima menos favorável à propagação de queimadas. Dessa forma, o Agroflora IA relaciona produção agropecuária diversificada (Oliveira et al., 2012), uso sustentável do solo e proteção climática da Amazônia sem apresentar esses efeitos como garantia para toda propriedade.
+
+\section{Gemma Integration \& Architecture / Integração do Gemma}
+
+Para o núcleo de inteligência do aplicativo, utilizamos a família de modelos abertos \textbf{Gemma} do Google, adotando o Gemma 3n E2B por seu equilíbrio entre capacidade e eficiência para o futuro uso em dispositivos móveis. A arquitetura foi construída utilizando a metodologia de Geração Aumentada por Recuperação (RAG). Alimentamos o pipeline de contexto com documentos curados, incluindo manuais de ILPF da Embrapa (Embrapa, 2020; Embrapa, 2021) e o Código Florestal (Brasil, 2012). No protótipo, os documentos são convertidos previamente em trechos curtos e metadados armazenados localmente. A pergunta recupera os trechos mais relevantes, que são enviados ao Gemma junto com regras de segurança. Isso reduz alucinações, permite indicar as fontes consultadas e traduz o jargão agronômico para uma linguagem acessível ao pequeno produtor sem exigir internet durante a consulta.
+
+Durante o desenvolvimento, o \textbf{Codex} foi utilizado como agente de engenharia e não como componente da aplicação final. Ele apoiou a estruturação do repositório, a implementação da interface web com aparência de aplicativo móvel, a conexão da API local ao Gemma 3n E2B por meio do Ollama, a criação da busca RAG e do modo de consulta sem geração. Também auxiliou na execução de verificações de lint e build. Essa colaboração acelerou ciclos de implementação, teste e revisão dentro do sprint de um dia, enquanto a arquitetura final permaneceu independente do Codex e preparada para execução offline.
+
+\section{Innovation \& Regional Impact / Impacto Regional}
+
+A principal inovação do projeto é a democratização do acesso à assistência técnica e jurídica rural através da Inteligência Artificial. O impacto regional para a Amazônia articula-se em três eixos fundamentais:
+
+\begin{itemize}
+    \item \textbf{Mitigação Climática e Meio Ambiente:} A transição para sistemas agrossilvipastoris atua diretamente na termodinâmica da superfície terrestre. A integração de árvores eleva a umidade específica local e redireciona o balanço de energia para o fluxo de calor latente. Isso estabiliza a camada limite atmosférica e atenua as temperaturas do ar próximas à superfície, reduzindo drasticamente as condições microclimáticas que favorecem a ignição e a propagação de queimadas (Bonan, 2016; Stull, 1988).
+    \item \textbf{Regularização e Impacto Socioeconômico:} A plataforma amplia o acesso a informações sobre recuperação de áreas degradadas e instrumentos de regularização. Esse conhecimento pode apoiar o produtor na preparação para assistência técnica e diálogo com o órgão ambiental. A adoção de ILPF, isoladamente, não regulariza o passivo, não encerra embargo e não garante acesso a financiamento.
+    \item \textbf{Sustentabilidade Produtiva:} O sistema promove a intensificação sustentável do uso da terra, permitindo o aumento e a diversificação da produtividade agropecuária (carne, grãos e produtos florestais) na mesma área, aliviando a pressão econômica que motiva novos desmatamentos de florestas primárias (Nobre et al., 2020; Oliveira et al., 2012).
+\end{itemize}
+
+\section{Challenges Overcome / Desafios Superados}
+
+Durante este \textit{sprint} de 1 dia, o maior desafio técnico foi garantir a precisão e a confiabilidade das respostas geradas pelo modelo. Como a regularização de terras embargadas envolve trâmites legais rigorosos, estruturar o RAG para recuperar com exatidão os trechos corretos do Decreto nº 6.514 e integrá-los de forma coesa com a teoria micrometeorológica de sistemas agrossilvipastoris (Stull, 1988), Embrapa (2020; 2021) e Oliveira et al. (2012) exigiu múltiplas iterações de engenharia de prompt e refinamento do fatiamento (\textit{chunking}) dos documentos em tempo recorde.
+
+O Codex foi especialmente útil para superar problemas de integração e reprodutibilidade. Durante os testes, identificamos a diferença entre o ambiente interno usado para executar o Node.js e o terminal comum do Windows, além de verificar que o Ollama estava instalado e ativo mesmo sem seu executável estar disponível no \textit{PATH}. Em outro computador, o modelo estava presente, mas a geração encerrava com incompatibilidade no backend CUDA. O diagnóstico separou disponibilidade do arquivo e capacidade real de inferência, levou à criação de um teste curto de geração e documentou a execução offline pela CPU como alternativa. O agente também ajudou a confirmar, pela API, quando o sistema estava realmente no modo Gemma em vez do modo de recuperação, a eliminar dependências dos PDFs originais e a validar que a aplicação continuava funcional apenas com a base processada. Essas verificações transformaram erros de ambiente em decisões documentadas de arquitetura e tornaram a demonstração mais confiável.
+
+\section{Project Links / Links do Projeto}
+\begin{itemize}
+    \item \textbf{Public Code Repository:} \url{https://github.com/erico-cristiam/ilpf-offline-agent}
+\end{itemize}
+
+\vspace{1cm}
+\renewcommand{\refname}{Referências Bibliográficas}
+\begin{thebibliography}{99}
+
+\bibitem{brasil2008} BRASIL. \textbf{Decreto nº 6.514, de 22 de julho de 2008}. Dispõe sobre as infrações e sanções administrativas ao meio ambiente, estabelece o processo administrativo federal para apuração destas infrações, e dá outras providências (incluindo o embargo e conversão de multas). Diário Oficial da União, Brasília, DF, 23 jul. 2008.
+
+\bibitem{brasil2012} BRASIL. \textbf{Lei nº 12.651, de 25 de maio de 2012}. Dispõe sobre a proteção da vegetação nativa; altera as Leis nºs 6.938, de 31 de agosto de 1981, 9.393, de 19 de dezembro de 1996, e 11.428, de 22 de dezembro de 2006; revoga as Leis nºs 4.771, de 15 de setembro de 1965, e 7.754, de 14 de abril de 1989, e a Medida Provisória nº 2.166-67, de 24 de agosto de 2001. Diário Oficial da União, Brasília, DF, 28 maio 2012.
+
+\bibitem{bonan2016} BONAN, Gordon B. \textbf{Ecological climatology: concepts and applications}. 2. ed. Cambridge: Cambridge University Press, 2016.
+
+\bibitem{embrapa2020} EMBRAPA. \textbf{Sistemas agrossilvipastoris na Amazônia brasileira}. Brasília, DF: Embrapa, 2020.
+
+\bibitem{embrapa2021} EMBRAPA. \textbf{Integração lavoura-pecuária-floresta: fundamentos e aplicações}. Brasília, DF: Embrapa, 2021.
+
+\bibitem{nobre2020} NOBRE, C. A. et al. Land-use and climate change risks in the Amazon. \textbf{Science Advances}, Washington, v. 6, n. 2, p. 1-15, 2020. Disponível em: https://doi.org/10.1126/sciadv.aba2949.
+
+\bibitem{oliveira2012} OLIVEIRA, T. K. de et al. \textbf{Experiências com implantação de unidades de integração lavoura-pecuária-floresta (iLPF) no Acre}. Rio Branco, AC: Embrapa Acre, 2012.
+
+\bibitem{pitman2009} PITMAN, Andrew J. et al. The impact of land cover change on climate. \textbf{Reviews of Geophysics}, Washington, v. 47, n. 4, 2009.
+
+\bibitem{stull1988} STULL, Roland B. \textbf{An introduction to boundary layer meteorology}. Dordrecht: Kluwer Academic Publishers, 1988.
+
+\end{thebibliography}
+
+\end{document}
